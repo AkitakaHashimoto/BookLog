@@ -1,47 +1,74 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 import './Components.css';
-import SearchArea from './SearchArea';
-import BookList from './BookList'
-import request from 'superagent';
 
+const Book = props => (
+  <tr>
+    <td>{ props.book.title }</td>
+    <td>
+      <a href="#" onClick={() => { props.deleteBook(props.book._id) }}>delete</a>
+    </td>
+  </tr>
+)
 
-class Read extends Component{
+export default class Read extends Component  {
   constructor(props) {
     super(props);
-    this.state = {
-      books: [],
-      searchField: ''
-    }
 
-    this.handleSearch = this.handleSearch.bind(this);
-    this.searchBook = this.searchBook.bind(this);
+    this.deleteBook = this.deleteBook.bind(this);
+
+    this.state = { 
+      books: [] 
+    };
   }
 
-  searchBook = (e) => {
-    e.preventDefault();
-    console.log( 'Searching ' + this.state.searchField);
-    request
-      .get("https://www.googleapis.com/books/v1/volumes")
-      .query({ q: this.state.searchField })
-      .then((data) => {
-        this.setState( { books: [...data.body.items]});
+  componentDidMount() {
+    axios.get('http://localhost:5000/books/')
+      .then(response => {
+        this.setState({ books: response.data})
+      })
+      .catch((error) => {
+        console.log(error);
       })
   }
 
-  handleSearch = (e) => {
-    console.log(e.target.value);
-    this.setState({ searchField: e.target.value})
+  deleteBook(id) {
+    axios.delete('http://localhost:5000/books/'+id)
+      .then(res => console.log(res.data));
+    this.setState({ 
+      books: this.state.books.filter(el => el._id !== id)
+    })
   }
 
-  render(){
+  bookList() {
+    return this.state.books.map(currentbook => {
+      return <Book book={ currentbook } deleteBook={ this.deleteBook } key = { currentbook._id } />
+    })
+  }
+
+  render() {
     return (
       <div>
-        <h1>Read Page</h1>
-        <SearchArea searchBook={this.searchBook} handleSearch={this.handleSearch}/>
-        <BookList books={ this.state.books } />
+        <h3>Already Read Books</h3>
+        <table className="table">
+          <thead className="thread-light">
+            <tr>
+              <th>Title</th>
+            </tr>
+          </thead>
+          <tbody>
+            { this.bookList() }
+          </tbody>
+        </table>
       </div>
-    );
+    )
   }
 }
-
-export default Read;
+// function Read() {
+//   return (
+//     <div>
+//       <h1>Read Page</h1>
+//     </div>
+//   );
+// }
