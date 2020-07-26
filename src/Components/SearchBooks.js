@@ -23,9 +23,10 @@ class SearchBooks extends Component{
     console.log( 'Searching ' + this.state.searchField);
     request
       .get("https://www.googleapis.com/books/v1/volumes")
-      .query({ q: this.state.searchField })
+      .query({ q: this.state.searchField, maxResults: 10 })
       .then((data) => {
         this.setState( { books: [...data.body.items]});
+        console.log(data);
       })
   }
 
@@ -37,7 +38,7 @@ class SearchBooks extends Component{
   render(){
     return (
       <div>
-        <h1>Search Page</h1>
+        <h1>Search</h1>
         <SearchArea searchBook={this.searchBook} handleSearch={this.handleSearch}/>
         <BookList books={ this.state.books } />
       </div>

@@ -11,6 +11,7 @@ const bookSchema = new Schema({
     trim: true,
     minlength: 3
   },
+  image: String,
 }, {
   timestamps: true,
 });

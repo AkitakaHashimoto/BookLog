@@ -2,10 +2,17 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './Components.css';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col'
+
 
 const Book = props => (
   <tr>
-    <td>{ props.book.title }</td>
+    <td>
+      <img className="table-image" src={props.book.image}></img>
+    </td>
+    <td >{ props.book.title }</td>
     <td>
       <a href="#" onClick={() => { props.deleteBook(props.book._id) }}>delete</a>
     </td>
@@ -49,26 +56,26 @@ export default class Read extends Component  {
 
   render() {
     return (
-      <div>
-        <h3>Already Read Books</h3>
-        <table className="table">
-          <thead className="thread-light">
-            <tr>
-              <th>Title</th>
-            </tr>
-          </thead>
-          <tbody>
-            { this.bookList() }
-          </tbody>
-        </table>
-      </div>
+      <Container>
+        <Row>
+          <Col>
+            <h3 className="list-header">Already Read Books</h3>
+            <table className="table">
+                <thead className="thread-light">
+                  <tr>
+                    <th></th>
+                    <th>Title</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  { this.bookList() }
+                </tbody>
+            </table>
+          </Col>
+        </Row>
+       
+      </Container>
     )
   }
 }
-// function Read() {
-//   return (
-//     <div>
-//       <h1>Read Page</h1>
-//     </div>
-//   );
-// }

@@ -1,13 +1,26 @@
 import React from 'react';
+import './Components.css';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 const SearchArea = (props) => {
     return (
-        <div className="search-area">
-            <form onSubmit={props.searchBook} action="">
-                <input onChange={props.handleSearch}type="text"></input>
-                <button type="submit">Search</button>
-            </form>
-        </div>
+        <Container>
+            <Row>
+                <Col>
+                    <div className="search">
+                        <form onSubmit={props.searchBook} action="">
+                            <input className="search-input" placeholder="Search for a Book" onChange={props.handleSearch}type="text"></input>
+                            <i className="fas fa-search"></i>
+                            <button className="search-button" type="submit">Search</button>
+                        </form>
+                    </div>
+                </Col>
+            </Row>
+ 
+        </Container>
+ 
     )
 }
 
