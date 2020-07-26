@@ -99,7 +99,8 @@ npm start
 3. Use the dropdown button to add the book to a list.
 4. View the freshly added book by going to the list using the navigation bar.
 
-# How It Works
+# Screenshots
+
 
 # What I Learned
 * Developed a user interface using Bootstrap.
