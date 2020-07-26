@@ -68,13 +68,38 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 
 =======
-# DraftkiReact
-A League of Legends character selection simulator.
+# Booki
+A book log that allows a user to search books and add them to three lists: Already Read, Currently Reading, and Want To Read.
+
+# Technologies
+* React
+* Bootstrap
+* ExpressJS
+* NodeJS
+* MongoDB
+* Mongoose
+* Google Books API
+
+# Prerequisites
+Create a .env file with a variable called ATLAS_URI and assign it a MongoDB URI string.
+
+Start the backend server by running this command in the backend directory.
+```bash
+npm start
+```
+
+Start the client by running this command in the src directory.
+```bash
+npm start
+```
 
 # How It Works
-1. Click the start button to start the draft. This will trigger the timer to start counting down and enables teams to lock in their character choices.
-2. Click on a champion icon in the middle of the screen. 
-3. Click the LockIn button to lock in champion choice.
+1. Click on the Search tab in the navigation bar to display the Search page.
+2. Search for a book using the input.
+3. Use the dropdown button to add the book to a list.
+4. View the freshly added book by going to the list using the navigation bar.
+
+# How It Works
 
 # What I Learned
 * Developed a user interface using Bootstrap.
