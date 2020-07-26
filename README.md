@@ -100,9 +100,9 @@ npm start
 4. View the freshly added book by going to the list using the navigation bar.
 
 # Screenshots
+Search Page
+![image](https://i.gyazo.com/7987ec701a81ad4706506a28bf00aa93.png)
 
+Currently Reading Page
+![image](https://i.gyazo.com/1963fc97c2a6c62b7e581caa36a5fe2a.png)
 
-# What I Learned
-* Developed a user interface using Bootstrap.
-* Implemented a timer that counts down from 30 seconds and resets back to 0.
-* Implemented a LockButton that allows the teams to lock in their champion choice.
